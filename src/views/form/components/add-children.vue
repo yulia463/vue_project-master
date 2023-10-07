@@ -48,18 +48,28 @@ import { useMainStore } from '@/stores/main'
 export default defineComponent({
   name: 'ChildForm',
   data() {
+    const mainStore = useMainStore()
+    const initialChildren = mainStore.children.length
+      ? mainStore.children
+      : [
+          {
+            age: '',
+            name: '',
+          },
+        ]
     return {
-      children: [{ name: '', age: '' }],
+      children: initialChildren,
     }
   },
   methods: {
     onSubmit() {
       const mainStore = useMainStore()
-      this.children.forEach((child) => {
-        if (child.name && child.age) {
-          mainStore.children.push({ ...child })
-        }
-      })
+      mainStore.children = this.children
+      // this.children.forEach((child) => {
+      //   if (child.name && child.age) {
+      //     mainStore.children.push({ ...child })
+      //   }
+      // })
     },
     addNewChild() {
       if (this.children.length < 5) {

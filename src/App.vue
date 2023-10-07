@@ -99,7 +99,7 @@
       </div>
     </div>
     <div class="hr" />
-    <router-view></router-view>
+    <router-view class="content"></router-view>
 
     <div class="footer">all rights reserved</div>
   </div>
@@ -115,6 +115,9 @@
   color: #2c3e50;
   display: flex;
   flex-direction: column;
+}
+.content {
+  margin-bottom: 76px;
 }
 .logo {
   margin-right: 20px;
@@ -144,7 +147,7 @@
   border: 1px solid #cccccc;
 }
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   background-color: #fafafa;
   display: flex;

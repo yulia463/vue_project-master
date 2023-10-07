@@ -3,13 +3,13 @@
     <div style="display: flex; flex-direction: column">
       <h3 style="font-weight: normal">Персональные данные</h3>
       <p class="person-info">
-        {{ `${person.name}, ${person.age} лет` }}
+        {{ `${person.name}, ${formatAge(person.age)}` }}
       </p>
       <p style="display: flex">Дети</p>
 
       <div class="children-container">
         <div v-for="child in children" :key="child.name" class="child-info">
-          {{ `${child.name}, ${child.age} лет` }}
+          {{ `${child.name}, ${formatAge(child.age)}` }}
         </div>
       </div>
     </div>
@@ -19,6 +19,7 @@
 <script>
 import { defineComponent } from 'vue'
 import { useMainStore } from '@/stores/main'
+import { formatAge } from '../../utils/formatAge'
 
 export default defineComponent({
   name: 'PreviewPage',
@@ -30,6 +31,7 @@ export default defineComponent({
       return useMainStore().children
     },
   },
+  methods: { formatAge },
 })
 </script>
 
@@ -38,6 +40,7 @@ export default defineComponent({
   display: flex;
   margin: 30px 375px;
   align-items: flex-start;
+  padding-bottom: 76px;
 }
 
 .person-info {
