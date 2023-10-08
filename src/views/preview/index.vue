@@ -8,7 +8,12 @@
       <p style="display: flex">Дети</p>
 
       <div class="children-container">
-        <div v-for="child in children" :key="child.name" class="child-info">
+        <div
+          v-for="child in children"
+          :key="child.name"
+          style="font-weight: bold"
+          class="child-info"
+        >
           {{ `${child.name}, ${formatAge(child.age)}` }}
         </div>
       </div>
