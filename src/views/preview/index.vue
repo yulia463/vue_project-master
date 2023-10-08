@@ -2,7 +2,7 @@
   <div class="preview-container">
     <div style="display: flex; flex-direction: column">
       <h3 style="font-weight: normal">Персональные данные</h3>
-      <p class="person-info">
+      <p v-if="person.name" class="person-info">
         {{ `${person.name}, ${formatAge(person.age)}` }}
       </p>
       <p style="display: flex">Дети</p>
@@ -33,7 +33,7 @@ export default defineComponent({
       return useMainStore().person
     },
     children() {
-      return useMainStore().children
+      return useMainStore().children.filter((child) => child.name)
     },
   },
   methods: { formatAge },
